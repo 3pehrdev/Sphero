@@ -21,7 +21,7 @@ _Based on Yagop _
 * ./launch.sh 
 
 # Please Check the *bot/utils.lua : line 962* and putt your api token
-And check *bot/seedbot.lua : line 199* and putt your ID
+And check *bot/seedbot.lua : line 229* and putt your ID
 * Good Source Is ready for you :)
 
 # [My Team](http://telegram.me/Spheroch)
