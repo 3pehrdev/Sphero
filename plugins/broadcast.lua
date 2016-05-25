@@ -17,6 +17,11 @@ local function run(msg, matches)
 	end
 end
 return {
+description = "broadcast to all groups",
+usage = {
+sudo = {
+"!broadcast <msg> : send your msg to all groups" },
+},
   patterns = {
     "^[!/](broadcast) +(.+)$",
     "^[!/](bc) (%d+) (.*)$"

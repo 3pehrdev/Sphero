@@ -88,7 +88,7 @@ local function pre_process(msg)
       --save it to log file
       savelog(msg.to.id, name.." ["..msg.from.id.."] spammed and kicked ! ")
       -- incr it on redis
-      local gbanspam = 'gban:spam'..msg.from.id
+      locagbanspam = 'gban:spam'..msg.from.id
       redis:incr(gbanspam)
       local gbanspam = 'gban:spam'..msg.from.id
       local gbanspamonredis = redis:get(gbanspam)
@@ -126,6 +126,11 @@ local function cron()
 end
 
 return {
+description = "antispam",
+usage = {
+moderator = {
+"!setflood <5-20> : set flood number for kick user" },
+},
   patterns = {},
   cron = cron,
   pre_process = pre_process

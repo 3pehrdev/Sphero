@@ -19,6 +19,11 @@ local function run(msg, matches)
 
 
 return {
+description = "lockleave",
+usage = {
+moderator = {
+"!<lock/unlock> leave : leaveing user wil be banned or not banned" },
+},
   patterns = {
     "^!!tgservice (.*)$"
   },
