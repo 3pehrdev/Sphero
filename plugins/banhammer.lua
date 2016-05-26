@@ -338,7 +338,7 @@ return {
     "^[#!/]([Kk]ickme)$",
     "^[#!/]([Bb]an)$",
     "^[#!/]([Uu]nban)$",
-    "^[#!/]([Ii]d)$",
+  --  "^[#!/]([Ii]d)$",
     "^([Bb]anall) (.*)$",
     "^([Bb]anall)$",
     "^([Bb]anlist) (.*)$",
@@ -354,7 +354,7 @@ return {
     "^([Kk]ickme) (.*)$",
     "^([Bb]an)$",
     "^([Uu]nban)$",
-    "^([Ii]d)$",
+    -- "^([Ii]d)$",
     "^!!tgservice (.+)$"
   },
   run = run,
