@@ -4,7 +4,7 @@ local text = "["..msg.from.print_name.."](https://telegram.me/"..msg.from.userna
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
 if matches[2]:lower() == 'id' and not is_momod(msg) then 
-local text = ' ` Sik koooniiii ` \n *Only For moderators*\n* mifahmiiii???*'
+local text = " ` Sik koooniiii ` \n *Only For moderators*\n* mifahmiiii???*"
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
 end
