@@ -1703,7 +1703,7 @@ return {
   "^([Uu]nlock) (.*)$", 
   "^([Ss]etflood) (%d+)$", 
   "^([Ss]ettings)$", 
-  --"^([Pp]ublic) (.*)$", 
+  "^([Pp]ublic) (.*)$", 
   "^([Mm]odlist)$", 
   "^([Nn]ewlink)$", 
   "^([Kk]ickinactive)$", 
