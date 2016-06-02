@@ -10,7 +10,7 @@ local function check_member_autorealm(cb_extra, success, result)
     if member_id ~= our_id then 
       -- Group configuration 
       data[tostring(msg.to.id)] = { 
-        group_type = 'Realm', 
+        group_type = 'Realm🌐', 
         settings = { 
           set_name = string.gsub(msg.to.print_name, '_', ' '), 
           lock_name = 'yes', 
@@ -53,7 +53,7 @@ local function check_member_realm_add(cb_extra, success, result)
     if member_id ~= our_id then 
       -- Group configuration 
       data[tostring(msg.to.id)] = { 
-        group_type = 'Realm', 
+        group_type = 'Realm🌐', 
         settings = { 
           set_name = string.gsub(msg.to.print_name, '_', ' '), 
           lock_name = 'yes', 
@@ -96,7 +96,7 @@ function check_member_group(cb_extra, success, result)
     if member_id ~= our_id then 
       -- Group configuration 
       data[tostring(msg.to.id)] = { 
-        group_type = 'Group', 
+        group_type = 'Normal🌐', 
         moderators = {}, 
         set_owner = member_id , 
         settings = { 
@@ -142,7 +142,7 @@ local function check_member_modadd(cb_extra, success, result)
 if member_id ~= our_id then 
       -- Group configuration 
       data[tostring(msg.to.id)] = { 
-        group_type = 'Group', 
+        group_type = 'Normal🌐', 
         moderators = {}, 
         set_owner = member_id , 
         settings = { 
@@ -259,7 +259,7 @@ local function show_group_settingsmod(msg, data, target)
 local gp_type = data[tostring(msg.to.id)]['group_type'] 
 
   local settings = data[tostring(target)]['settings'] 
-  local text = "*🌐Group settings🌐* :\n_✔️Lock name_ : *"..settings.lock_name.."*\n_✔️Lock  photo_ : *"..settings.lock_photo.."*\n_✔️Lock member_ : *"..settings.lock_member.."*\n_✔️Lock leave_ : *"..settings.leave_ban.."*\n_✔️Lock   arabic_ : *"..settings.lock_arabic.."*\n_✔️Lock english_ : *"..settings.lock_english.."*\n_✔️Lock chat_ : *"..settings.lock_chat.."*\n_✔️Lock join_ : *"..settings.lock_join.."*\n_✔️Lock tag_ : *"..settings.antitag.."*\n_✔️Lock link_ : *"..settings.lock_ads.."*\n_✔️Lock emoji_ : *"..settings.antiemoji.."*\n_✔️Lock share_ : *"..settings.lock_share.."*\n_✔️Lock video_ : *"..settings.lock_video.."*\n_✔️Lock voice_ : *"..settings.lock_voice.."*\n_✔️Lock badwords_ : *"..settings.antifosh.."*\n_✔️Flood sensitivity_ : *"..NUM_MSG_MAX.."*\n_✔️Bot protection_ : *"..bots_protection.."*\n_✔️Group Type_ : *"..gp_type.."*\n*✔️Bot Version* : _"..VERSION.."_\n*--------*\n[Developer](https://telegram.me/mrblacklife)\n[Sphero Channel](https://telegram.me/SpheroCh)" 
+  local text = "*🌐Group settings🌐* :\n_✔️Lock name_ : *"..settings.lock_name.."*\n_✔️Lock  photo_ : *"..settings.lock_photo.."*\n_✔️Lock member_ : *"..settings.lock_member.."*\n_✔️Lock leave_ : *"..settings.leave_ban.."*\n_✔️Lock  arabic_ : *"..settings.lock_arabic.."*\n_✔️Lock english_ : *"..settings.lock_english.."*\n_✔️Lock chat_ : *"..settings.lock_chat.."*\n_✔️Lock join_ : *"..settings.lock_join.."*\n_✔️Lock link_ : *"..settings.lock_ads.."*\n_✔️Lock emoji_ : *"..settings.antiemoji.."*\n_✔️Lock share_ : *"..settings.lock_share.."*\n_✔️Lock video_ : *"..settings.lock_video.."*\n_✔️Lock voice_ : *"..settings.lock_voice.."*\n_✔️Lock badwords_ : *"..settings.antifosh.."*\n_✔️Flood sensitivity_ : *"..NUM_MSG_MAX.."*\n_✔️Bot protection_ : *"..bots_protection.."*\n-------\n_✔️Public : *"..public.."*\n_✔️Group Model_ : *"..gp_type.."*\n*✔️Bot Version* : _"..VERSION.."_\n*--------*\n[Developer](https://telegram.me/mrblacklife)\n[Sphero Channel](https://telegram.me/SpheroCh)" 
   local text = text 
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end 
@@ -432,7 +432,7 @@ local function lock_group_tag(msg, data, target)
   else 
     data[tostring(target)]['settings']['antitag'] = 'yes' 
     save_data(_config.moderation.data, data) 
-    return 'tag has been locked' 
+    return 'Tag has been locked' 
   end 
 end 
 
@@ -544,7 +544,7 @@ local function lock_group_fosh(msg, data, target)
   else 
     data[tostring(target)]['settings']['antifosh'] = 'yes' 
     save_data(_config.moderation.data, data) 
-    return 'tag has been locked' 
+    return 'fosh has been locked' 
   end 
 end 
 
@@ -834,7 +834,7 @@ end
 local function get_rules(msg, data) 
   local data_cat = 'rules' 
   if not data[tostring(msg.to.id)][data_cat] then 
-    return 'No rules available.' 
+    return 'rules:\nplease Don't Add bot to Group\nmy Developer is \n@MrBlackLife\nAdn my Channel\n@SpheroCh' 
   end 
   local rules = data[tostring(msg.to.id)][data_cat] 
   local rules = 'Chat rules:\n'..rules 
@@ -1455,17 +1455,17 @@ if msg.to.id and data[tostring(msg.to.id)] then
       return show_group_settingsmod(msg, data, target) 
     end 
 
- -- if matches[1] == 'public' then 
-    --local target = msg.to.id 
-    --if matches[2] == 'yes' then 
-    --  savelog(msg.to.id, name_log.." ["..msg.from.id.."] set group to: public") 
-      --return set_public_membermod(msg, data, target) 
-  --  end 
---    if matches[2] == 'no' then 
-  --    savelog(msg.to.id, name_log.." ["..msg.from.id.."] set group to: not public") 
-  --    return unset_public_membermod(msg, data, target) 
-  --  end 
- -- end 
+ if matches[1] == 'public' then 
+    local target = msg.to.id 
+    if matches[2] == 'yes' then 
+     savelog(msg.to.id, name_log.." ["..msg.from.id.."] set group to: public") 
+      return set_public_membermod(msg, data, target) 
+   end 
+   if matches[2] == 'no' then 
+    savelog(msg.to.id, name_log.." ["..msg.from.id.."] set group to: not public") 
+   return unset_public_membermod(msg, data, target) 
+  end 
+ end 
 
 if matches[1] == 'newlink' and not is_realm(msg) then 
       if not is_momod(msg) then 
@@ -1669,7 +1669,7 @@ return {
   "^[!/]([Uu]nlock) (.*)$", 
   "^[!/]([Ss]etflood) (%d+)$", 
   "^[!/]([Ss]ettings)$", 
- -- "^[!/]([Pp]ublic) (.*)$", 
+  "^[!/]([Pp]ublic) (.*)$", 
   "^[!/]([Mm]odlist)$", 
   "^[!/]([Nn]ewlink)$", 
   "^[!/]([Ll]ink)$", 
