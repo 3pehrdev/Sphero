@@ -62,6 +62,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
       local sambutan = "*Hi* [ "..msg.from.print_name.." ](https://telegram.me/"..msg.from.username..")\n*welcome to*: '_"..string.gsub(msg.to.print_name, "_", " ").."_'\n*Please Use !help To Show My Commands*\n\n"
       local text = sambutan..about..rules.."\n"
       local receiver = get_receiver(msg)
+local chat = 'chat#id'..extra.chatid
 if is_banned(result.id, extra.chatid) then -- Ignore bans
             send_large_msg(chat, 'You're Banned. Sorry :)')
 	elseif is_gbanned(result.id) then -- Ignore globall bans
@@ -70,6 +71,7 @@ if is_banned(result.id, extra.chatid) then -- Ignore bans
 	    chat_add_user(chat, user, ok_cb, false) -- Add user on cha
       send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
    end
+end
 end
 
 local function run(msg, matches)
