@@ -834,7 +834,7 @@ end
 local function get_rules(msg, data) 
   local data_cat = 'rules' 
   if not data[tostring(msg.to.id)][data_cat] then 
-    return 'rules:\nplease Dont Add bot to Group\nmy Developer is \n@MrBlackLife\nAnd my Channel\n@SpheroCh' 
+    return 'Chat rules:\nplease Dont Add bot to Group\nmy Developer is \n@MrBlackLife\nAnd my Channel\n@SpheroCh' 
   end 
   local rules = data[tostring(msg.to.id)][data_cat] 
   local rules = 'Chat rules:\n'..rules 
