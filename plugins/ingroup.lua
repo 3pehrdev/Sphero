@@ -316,11 +316,11 @@ local function lock_group_ads(msg, data, target)
   end 
   local group_ads_lock = data[tostring(target)]['settings']['lock_ads'] 
   if group_ads_lock == 'yes' then 
-    return 'link is already locked' 
+    return 'link/tag is already locked' 
   else 
     data[tostring(target)]['settings']['lock_ads'] = 'yes' 
     save_data(_config.moderation.data, data) 
-    return 'link has been locked' 
+    return 'link/tag has been locked' 
   end 
 end 
 
@@ -330,11 +330,11 @@ local function unlock_group_ads(msg, data, target)
   end 
   local group_ads_lock = data[tostring(target)]['settings']['lock_ads'] 
   if group_ads_lock == 'no' then 
-    return 'link is already unlocked' 
+    return 'link/tag is already unlocked' 
   else 
     data[tostring(target)]['settings']['lock_ads'] = 'no' 
     save_data(_config.moderation.data, data) 
-    return 'link has been unlocked' 
+    return 'link/tag has been unlocked' 
   end 
 end 
 
