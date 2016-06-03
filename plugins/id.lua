@@ -1,10 +1,6 @@
 do function run(msg, matches)
-if matches[1]:lower() == 'id' and is_momod(msg) then
+if matches[1]:lower() == 'id' then
 local text = "["..msg.from.print_name.."](https://telegram.me/"..msg.from.username..")\n*Your ID* : _"..msg.from.id.."_\n*Group ID* : _"..msg.to.id.."_"
-send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
-end
-if matches[2]:lower() == 'id' and not is_momod(msg) then 
-local text = " ` Sik koooniiii ` \n *Only For moderators*\n* mifahmiiii???*"
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
 end
