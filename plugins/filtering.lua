@@ -4,32 +4,32 @@ local function save_filter(msg, name, value)
       hash = 'chat:'..msg.to.id..':filters' 
    end 
    if msg.to.type == 'user' then 
-      local text = 'only for the groups!' 
+      return 'only for the groups!' 
    end 
    if hash then 
       redis:hset(hash, name, value) 
-      local text = "Done!!\n#Sphero_Helper" 
+      return "Done!!\n#Sphero_Helper" 
    end 
 end 
 
 local function get_filter_hash(msg) 
    if msg.to.type == 'chat' then 
-      local text = 'chat:'..msg.to.id..':filters' 
+      return 'chat:'..msg.to.id..':filters' 
    end 
 end 
 
 local function list_filter(msg) 
    if msg.to.type == 'user' then 
-      local text = 'only for the groups' 
+      return 'only for the groups' 
    end 
    local hash = get_filter_hash(msg) 
    if hash then 
       local names = redis:hkeys(hash) 
-      local text = '*FilterList for*_'..msg.to.title..'_\n* And Your #ID :* _'..msg.to.id..'_:\n*______________________________*\n' 
+      local text = 'FilterList for'..msg.to.title..'\n And Your #ID : '..msg.to.id..':\n______________________________\n' 
       for i=1, #names do 
          text = text..'> '..names[i]..'\n' 
       end 
-      local text = text 
+      return text 
    end 
 end 
 
@@ -38,7 +38,7 @@ local function get_filter(msg, var_name)
    if hash then 
       local value = redis:hget(hash, var_name) 
       if value == 'msg' then 
-         local text = '*Word is Blocked on group \nplease not write this Word in this Group*' 
+         return 'Word is Blocked on group \nplease not write this Word in this Group' 
       elseif value == 'kick' then 
          send_large_msg('chat#id'..msg.to.id, "Word is Blocked\nWrite = kick\n bye!!") 
          chat_del_user('chat#id'..msg.to.id, 'user#id'..msg.from.id, ok_cb, true) 
@@ -51,11 +51,11 @@ local function get_filter_act(msg, var_name)
    if hash then 
       local value = redis:hget(hash, var_name) 
       if value == 'msg' then 
-         local text = '*Warning and pointed to the word!!*' 
+         return 'Warning and pointed to the word!!' 
       elseif value == 'kick' then 
-         local text = '*This word is Blocked!*' 
+         return 'This word is Blocked!' 
       elseif value == 'none' then 
-         local text = '*The word has been out of Filter!!*' 
+         return 'The word has been out of Filter!!' 
       end 
    end 
 end 
@@ -63,25 +63,24 @@ end
 local function run(msg, matches) 
    local data = load_data(_config.moderation.data) 
    if matches[1] == "ilterlist" then 
-      local text = list_filter(msg) 
+      return list_filter(msg) 
    elseif matches[1] == "ilter" and matches[2] == ">" then 
       if data[tostring(msg.to.id)] then 
          local settings = data[tostring(msg.to.id)]['settings'] 
          if not is_momod(msg) then 
-            local text = "*only for the moderators!*" 
+            return "only for the moderators!" 
          else 
             local value = 'msg' 
             local name = string.sub(matches[3]:lower(), 1, 1000) 
             local text = save_filter(msg, name, value) 
-           local text = text 
+            return text 
          end 
-send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
       end 
    elseif matches[1] == "ilter" and matches[2] == "+" then 
       if data[tostring(msg.to.id)] then 
          local settings = data[tostring(msg.to.id)]['settings'] 
          if not is_momod(msg) then 
-            return "*only for the moderators!*" 
+            return "only for the moderators!" 
          else 
             local value = 'kick' 
             local name = string.sub(matches[3]:lower(), 1, 1000) 
