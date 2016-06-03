@@ -1,18 +1,3 @@
-Skip to content
-This repository
-Pull requests
-Issues
-Gist
- @3pehrdev
- Unwatch 1
-  Star 0
-  Fork 1 3pehrdev/apibot
- Code  Issues 0  Pull requests 0  Wiki  Pulse  Graphs  Settings
-Branch: master Find file apibot/plugins/filter.lua
-197f6eb  5 days ago
-@3pehrdev 3pehrdev Create filter.lua
-1 contributor
-RawBlameHistory    144 lines (137 sloc)  5.1 KB
 local function save_filter(msg, name, value) 
    local hash = nil 
    if msg.to.type == 'chat' then 
@@ -156,5 +141,3 @@ return {
    }, 
    run = run 
 } 
-Status API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Contact Help
