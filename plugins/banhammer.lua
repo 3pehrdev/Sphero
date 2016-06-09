@@ -98,7 +98,7 @@ local function kick_ban_res(extra, success, result)
             return send_large_msg(receiver, "You can't kick mods/owner/admins")
          end
          return kick_user(member_id, chat_id)
-      elseif get_cmd == 'ban' then
+      elseif get_cmd == 'ban +' then
         if is_momod2(member_id, chat_id) and not is_admin2(sender) then
           return send_large_msg(receiver, "You can't ban mods/owner/admins")
         end
@@ -153,7 +153,7 @@ local function run(msg, matches)
     end
     return ban_list(chat_id)
   end
-  if matches[1]:lower() == 'ban' then-- /ban 
+  if matches[1]:lower() == 'ban +' then-- /ban 
     if type(msg.reply_id)~="nil" and is_momod(msg) then
       if is_admin(msg) then
         local msgr = get_message(msg.reply_id,ban_by_reply_admins, false)
@@ -189,7 +189,7 @@ local function run(msg, matches)
   end
 
 
-  if matches[1]:lower() == 'unban' then -- /unban 
+  if matches[1]:lower() == 'ban -' then -- /unban 
     if type(msg.reply_id)~="nil" and is_momod(msg) then
       local msgr = get_message(msg.reply_id,unban_by_reply, false)
     end
@@ -256,7 +256,7 @@ end
     return
   end
 
-  if matches[1]:lower() == 'banall' then -- Global ban
+  if matches[1]:lower() == 'gban +' then -- Global ban
     if type(msg.reply_id) ~="nil" and is_admin(msg) then
       return get_message(msg.reply_id,banall_by_reply, false)
     end
@@ -268,7 +268,7 @@ end
          	return false 
         end
         	banall_user(targetuser)
-       		return 'User ['..user_id..' ] globally banned'
+       		return 'User ['..user_id..' ] banned From all Groups!'
       else
 	local cbres_extra = {
 		chat_id = msg.to.id,
@@ -280,7 +280,7 @@ end
 		res_user(username, kick_ban_res, cbres_extra)
       	end
   end
-  if matches[1]:lower() == 'unbanall' then -- Global unban
+  if matches[1]:lower() == 'gban -' then -- Global unban
     local user_id = matches[2]
     local chat_id = msg.to.id
       if string.match(matches[2], '^%d+$') then
@@ -312,32 +312,35 @@ user = {
 "!kickme : kick you from our group",
 },
 moderator = {
-"!<ban/unban> <id/username/reply> : ban or unban users from group",
+"!ban<+-> <id/username/reply> : ban or unban users from group",
 "!kick <id/username/reply> : remove users from group",
 "!banlist : show list of ban users",
 },
 admin = {
-"!banall <id/username/reply> : ban from all groups",
-"!unbanall <id/username> : unban from all groups",
+"!gban + <id/username/reply> : ban from all groups",
+"!gban - <id/username> : unban from all groups",
 "!gbanlist : show list of globally ban users" },
 },
   patterns = {
-    "^[!/]([Bb]anall) (.*)$",
-    "^[!/]([Bb]anall)$",
+    "^[!/](gban +) (.*)$",
+    "^[!/](gban +)$",
     "^[!/]([Bb]anlist) (.*)$",
     "^[!/]([Bb]anlist)$",
     "^[!/]([Gg]banlist)$",
-    "^[!/]([Bb]an) (.*)$",
+    "^[!/]([Bb]an +) (.*)$",
     "^[!/]([Kk]ick)$",
-    "^[!/]([Uu]nban) (.*)$",
-    "^[!/]([Uu]nbanall) (.*)$",
-    "^[!/]([Uu]nbanall)$",
+    "^[!/](ban -) (.*)$",
+    "^[!/](gban -) (.*)$",
+    "^[!/](gban -)$",
     "^[!/]([Kk]ick) (.*)$",
     "^[!/]([Kk]ickme)$",
-    "^[!/]([Bb]an)$",
-    "^[!/]([Uu]nban)$",
+    "^[!/]([Bb]an +)$",
+    "^[!/](ban -)$",
     "^!!tgservice (.+)$"
   },
   run = run,
   pre_process = pre_process
 }
+-- end
+-- banhammer.lua
+-- by mrblacklife
