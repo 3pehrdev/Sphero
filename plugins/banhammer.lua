@@ -153,7 +153,7 @@ local function run(msg, matches)
     end
     return ban_list(chat_id)
   end
-  if matches[1]:lower() == 'ban' then-- /ban 
+  if matches[1]:lower() == 'ban +' then-- /ban 
     if type(msg.reply_id)~="nil" and is_momod(msg) then
       if is_admin(msg) then
         local msgr = get_message(msg.reply_id,ban_by_reply_admins, false)
@@ -179,7 +179,7 @@ local function run(msg, matches)
       else
 		local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'ban',
+		get_cmd = 'ban +',
 		from_id = msg.from.id
 		}
 		local username = matches[2]
@@ -327,14 +327,14 @@ admin = {
     "^[!/]([Bb]anlist) (.*)$",
     "^[!/]([Bb]anlist)$",
     "^[!/]([Gg]banlist)$",
-    "^[!/]([Bb]an) (.*)$",
+    "^[!/]([Bb]an +) (.*)$",
     "^[!/]([Kk]ick)$",
     "^[!/]([Uu]nban) (.*)$",
     "^[!/]([Uu]nbanall) (.*)$",
     "^[!/]([Uu]nbanall)$",
     "^[!/]([Kk]ick) (.*)$",
     "^[!/]([Kk]ickme)$",
-    "^[!/]([Bb]an)$",
+    "^[!/]([Bb]an +)$",
     "^[!/]([Uu]nban)$",
     "^!!tgservice (.+)$"
   },
