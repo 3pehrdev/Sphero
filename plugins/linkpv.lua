@@ -87,7 +87,7 @@ return {
  },
   patterns = {
     "^[Nn](ewlink)$",
-    "^[Ll](ink)$",
+  --  "^[Ll](ink)$",
  "^[Nn](ewlink) (pv)$",
     "^[Ll](ink) (pv)$",
  "^[Cc](link)$",
