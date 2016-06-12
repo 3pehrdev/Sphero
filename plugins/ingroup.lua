@@ -1492,8 +1492,9 @@ if matches[1] == 'newlink' and not is_realm(msg) then
       if not group_link then 
         return "Create a link using /newlink first !" 
       end 
+local gp_type = data[tostring(msg.to.id)]['group_type']
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]") 
-      local text = "*Link for* ["..gp_type.."]("..group_link..") *Group!*" 
+      local text = "*Link for* ["..gp_type.."]("..group_link..")*Group!*" 
    send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
  end 
     if matches[1] == 'setowner' and matches[2] then 
