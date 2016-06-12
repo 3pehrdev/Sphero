@@ -48,43 +48,43 @@ local function plugin_help(name,number,requester)
           if ku == 'user' then -- usage for user
               if (type(plugin.usage.user) == "table") then
                   for k,v in pairs(plugin.usage.user) do
-                      text = text..v..'\n---\n'
+                      text = text..v..'\n〰〰〰〰〰〰〰\n'
                   end
               elseif has_usage_data(plugin) then -- Is not empty
-                  text = text..plugin.usage.user..'\n---\n'
+                  text = text..plugin.usage.user..'\n〰〰〰〰〰〰〰\n'
               end
           elseif ku == 'moderator' then -- usage for moderator
               if requester == 'moderator' or requester == 'admin' or requester == 'sudo' then
                   if (type(plugin.usage.moderator) == "table") then
                       for k,v in pairs(plugin.usage.moderator) do
-                          text = text..v..'\n---\n'
+                          text = text..v..'\n〰〰〰〰〰〰〰\n'
                       end
                   elseif has_usage_data(plugin) then -- Is not empty
-                      text = text..plugin.usage.moderator..'\n---\n'
+                      text = text..plugin.usage.moderator..'\n〰〰〰〰〰〰〰\n'
                   end
               end
           elseif ku == 'admin' then -- usage for admin
               if requester == 'admin' or requester == 'sudo' then
                   if (type(plugin.usage.admin) == "table") then
                       for k,v in pairs(plugin.usage.admin) do
-                          text = text..v..'\n---\n'
+                          text = text..v..'\n〰〰〰〰〰〰〰\n'
                       end
                   elseif has_usage_data(plugin) then -- Is not empty
-                      text = text..plugin.usage.admin..'\n---\n'
+                      text = text..plugin.usage.admin..'\n〰〰〰〰〰〰〰\n'
                   end
               end
           elseif ku == 'sudo' then -- usage for sudo
               if requester == 'sudo' then
                   if (type(plugin.usage.sudo) == "table") then
                       for k,v in pairs(plugin.usage.sudo) do
-                          text = text..v..'\n---\n'
+                          text = text..v..'\n〰〰〰〰〰〰〰\n'
                       end
                   elseif has_usage_data(plugin) then -- Is not empty
-                      text = text..plugin.usage.sudo..'\n---\n'
+                      text = text..plugin.usage.sudo..'\n〰〰〰〰〰〰〰\n'
                   end
               end
           else
-              text = text..usage..'\n---\n'
+              text = text..usage..'\n〰〰〰〰〰〰〰\n'
           end
       end
       text = text..''
@@ -98,7 +98,7 @@ end
 -- !available command
 local function telegram_help()
   local i = 0
-  local text = "Tools for SpheroBoT:\n----\n"
+  local text = "Tools for SpheroBoT:\n〰〰〰〰〰〰〰\n"
   -- Plugins names
   for name in pairsByKeys(plugins) do
     if plugins[name].hidden then
