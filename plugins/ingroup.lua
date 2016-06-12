@@ -1474,7 +1474,7 @@ if matches[1] == 'newlink' and not is_realm(msg) then
       local function callback (extra , success, result) 
         local receiver = 'chat#'..msg.to.id 
         if success == 0 then 
-           return send_large_msg(receiver, eror Bot is Not Creator!\nSend me /setlink ') 
+           return send_large_msg(receiver, 'Eror Bot is Not Creator!\nSend me /setlink ') 
         end 
         send_large_msg(receiver, "Created a new link") 
         data[tostring(msg.to.id)]['settings']['set_link'] = result 
